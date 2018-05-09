@@ -42,7 +42,7 @@ public final class Settings {
   private Settings() {};
 
   public static final String NAME = "pattypan";
-  public static final String VERSION = "18.02";
+  public static final String VERSION = "18.02 BAnQ WMCA";
   public static final String USERAGENT = NAME + "/" + VERSION + " (https://github.com/yarl/pattypan)";
 
   public static final Map<String, String> SETTINGS = new HashMap<>();
@@ -397,6 +397,54 @@ public final class Settings {
                     + " |source = ${source}\n"
                     + " |permission = ${permission}\n"
                     + " |other_versions = ${other_versions}\n"
+                    + "}}\n\n"
+                    + "=={{int:license-header}}==\n"
+                    + "${license}${partnership}"
+                    + "\n\n"
+                    + "<#if categories ? has_content>\n"
+                    + "<#list categories ? split(\";\") as category>\n"
+                    + "[[Category:${category?trim}]]\n"
+                    + "</#list>\n"
+                    + "<#else>{{subst:unc}}\n"
+                    + "</#if>"
+            )
+    );
+
+    TEMPLATES.put("BANQ media",
+            new Template("BANQ media",
+                    new TemplateField[]{
+                      new TemplateField("photographer", "Photographer"),
+                      new TemplateField("title", "Title"),
+                      new TemplateField("description", "Description"),
+                      new TemplateField("date", "Date"),
+                      new TemplateField("technique", "Technique"),
+                      new TemplateField("holdings", "Holdings"),
+                      new TemplateField("holdings_url", "Holdings URL"),
+                      new TemplateField("holdings_description", "Holdings Description"),
+                      new TemplateField("id", "ID"),
+                      new TemplateField("id_url", "ID URL"),
+                      new TemplateField("latitude", "Latitude"),
+                      new TemplateField("longitude", "Longitude"),
+                      new TemplateField("center", "Center"),
+                      new TemplateField("project", "Project"),
+                      new TemplateField("other_versions", "Other Versions")
+                    }, "=={{int:filedesc}}==\n"
+                    + "{{BANQ media\n"
+                    + " |photographer = ${photographer}\n"
+                    + " |title = ${title}\n"
+                    + " |description = ${description}\n"
+                    + " |date = ${date}\n"
+                    + " |technique = ${technique}\n"
+                    + " |holdings = ${holdings}\n"
+                    + " |holdings url = ${holdings_url}\n"
+                    + " |holdings description = ${holdings_description}\n"
+                    + " |id = ${id}\n"
+                    + " |id url = ${id_url}\n"
+                    + " |latitude = ${latitude}\n"
+                    + " |longitude = ${longitude}\n"
+                    + " |center = ${center}\n"
+                    + " |project = ${project}\n"
+                    + " |other versions = ${other_versions}\n"
                     + "}}\n\n"
                     + "=={{int:license-header}}==\n"
                     + "${license}${partnership}"
