@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.wikipedia.Wiki;
 import pattypan.panes.StartPane;
+import java.util.Locale;
 
 public class Main extends Application {
   @Override
@@ -70,6 +71,9 @@ public class Main extends Application {
       }
     }
 
+	Locale frenchLocale = new Locale("fr", "");
+	Locale.setDefault(frenchLocale);
+
     Settings.readProperties();
 
     Session.LOGGER.log(Level.INFO,
@@ -78,7 +82,7 @@ public class Main extends Application {
     );
 
     String os = System.getProperty("os.name");
-
+    
     Session.LOGGER.log(Level.INFO,
             "Operating System: {0}\nPattypan Version: {1}",
             new String[]{os, Settings.VERSION}
